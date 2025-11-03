@@ -81,10 +81,7 @@ public class CustomApplianceSet implements Set<ElectricAppliance> {
      * @return The index of the element, or -1 if not found.
      */
     private int indexOf(Object o) {
-        // Note: For array-based Set, the search complexity is O(N).
         if (o == null) {
-            // Nulls are not supported by the add method in this implementation,
-            // but we check the existing elements array just in case.
             for (int i = 0; i < size; i++) {
                 if (elements[i] == null) {
                     return i;
@@ -141,7 +138,7 @@ public class CustomApplianceSet implements Set<ElectricAppliance> {
         }
 
         if (contains(electricAppliance)) {
-            return false; // Element is already present (Set property)
+            return false;
         }
 
         ensureCapacity();
@@ -159,10 +156,10 @@ public class CustomApplianceSet implements Set<ElectricAppliance> {
     public boolean remove(Object o) {
         int index = indexOf(o);
         if (index < 0) {
-            return false; // Element not found
+            return false;
         }
 
-        // Shift elements to the left to fill the gap (Array-specific removal)
+        // Shift elements to the left to fill the gap
         int numMoved = size - 1 - index;
         if (numMoved > 0) {
             System.arraycopy(elements, index + 1, elements, index, numMoved);
@@ -358,7 +355,7 @@ public class CustomApplianceSet implements Set<ElectricAppliance> {
             }
         }
 
-        // Cleanup: If elements were removed (writeIndex < original size), clear trailing references and update size.
+        // Cleanup: If elements were removed, clear trailing references and update size.
         if (writeIndex < size) {
             modified = true;
 
@@ -366,7 +363,7 @@ public class CustomApplianceSet implements Set<ElectricAppliance> {
             for (int i = writeIndex; i < size; i++) {
                 elements[i] = null;
             }
-            size = writeIndex; // Update the new size
+            size = writeIndex;
         }
 
         return modified;
