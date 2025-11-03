@@ -19,13 +19,12 @@ public abstract class ElectricAppliance {
 
     /**
      * Constructor for the ElectricAppliance class.
-     * @param name The name of the appliance (e.g., "Bosch Fridge").
+     * @param name The name of the appliance.
      * @param powerConsumptionW The power consumed by the appliance in Watts.
      * @param electromagneticRadiationLevel The level of electromagnetic radiation emitted.
      * @throws IllegalArgumentException if powerConsumptionW is not positive or radiation level is negative.
      */
     public ElectricAppliance(String name, int powerConsumptionW, double electromagneticRadiationLevel) {
-        // Input validation for safety and logic
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Name must not be null or empty.");
         }
@@ -104,7 +103,40 @@ public abstract class ElectricAppliance {
      */
     @Override
     public String toString() {
-        return String.format(Locale.US, "%-15s | Power: %4dW | Plugged: %-5s | EMR Level: %.2f",
+        return String.format(Locale.US, "%-18s | Power: %4dW | Plugged: %-5s | EMR Level: %.2f",
                 name, powerConsumptionW, (isPluggedIn ? "Yes" : "No"), electromagneticRadiationLevel);
+    }
+
+    /**
+     * Compares this ElectricAppliance object to the specified object.
+     * Two appliances are considered equal if they have the same name, power consumption,
+     * and electromagnetic radiation level. This is crucial for Set collection functionality.
+     *
+     * @param o The object to compare against.
+     * @return {@code true} if the objects are the same; {@code false} otherwise.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ElectricAppliance that = (ElectricAppliance) o;
+        return powerConsumptionW == that.powerConsumptionW &&
+                Double.compare(electromagneticRadiationLevel, that.electromagneticRadiationLevel) == 0 &&
+                name.equals(that.name);
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     * This method must be overridden whenever {@code equals} is overridden to maintain
+     * the general contract for the {@code Object.hashCode} method, which is vital for
+     * correct behavior in hash-based collections (like Set).
+     *
+     * @return A hash code value for this object.
+     */
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + powerConsumptionW;
+        return result;
     }
 }
