@@ -81,13 +81,16 @@ public class Main {
         System.out.println("Added Fridge2. New size: " + setCollection.size()); // Size: 4
 
         boolean addedDuplicate = setCollection.add(fridge1);
-        System.out.println("Attempted to add Fridge1 (duplicate). Was added? " + addedDuplicate + ". Final size: " + setCollection.size());
+        System.out.println("Attempted to add Fridge1 (duplicate). Was added? " + addedDuplicate + ". Final size: "
+                + setCollection.size());
 
         boolean removedLaptop = setCollection.remove(laptop1);
-        System.out.println("Removed Laptop1. Was removed? " + removedLaptop + ". New size: " + setCollection.size()); // Size: 3
+        System.out.println("Removed Laptop1. Was removed? " + removedLaptop + ". New size: "
+                + setCollection.size()); // Size: 3
 
         boolean removedDryer = setCollection.remove(dryer1);
-        System.out.println("Removed Dryer1. Was removed? " + removedDryer + ". Final size: " + setCollection.size()); // Size: 2
+        System.out.println("Removed Dryer1. Was removed? " + removedDryer + ". Final size: "
+                + setCollection.size()); // Size: 2
 
         boolean removedAgain = setCollection.remove(laptop1);
         System.out.println("Attempted to remove Laptop1 again. Was removed? " + removedAgain);
@@ -104,7 +107,8 @@ public class Main {
         System.out.println("SET Temp before retainAll: Size " + setTemp.size() + ", Elements: Dryer1, Fridge2, Laptop1");
 
         // Only retain fridge2 and a non-existent item
-        Collection<ElectricAppliance> retainOnlyFridge2 = Arrays.asList(fridge2, new HairDryer("Ghost Dryer", 100, 0.0, 1));
+        Collection<ElectricAppliance> retainOnlyFridge2 = Arrays.asList(fridge2, new HairDryer("Ghost Dryer",
+                100, 0.0, 1));
 
         boolean modified = setTemp.retainAll(retainOnlyFridge2);
         System.out.println("SET Temp after retainAll: Changed? " + modified + ", New size: " + setTemp.size());
