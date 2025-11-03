@@ -61,11 +61,11 @@ class ElectricApplianceTest {
     void testToStringFormat() {
         // Check if the toString method generates the expected format
         ElectricAppliance device = new TestAppliance("Mixer", 300, 0.9);
-        String expectedUnplugged = "Mixer           | Power:  300W | Plugged: No    | EMR Level: 0.90";
+        String expectedUnplugged = "Mixer              | Power:  300W | Plugged: No    | EMR Level: 0.90";
         assertEquals(expectedUnplugged, device.toString().trim());
 
         device.plugIn();
-        String expectedPlugged = "Mixer           | Power:  300W | Plugged: Yes   | EMR Level: 0.90";
+        String expectedPlugged = "Mixer              | Power:  300W | Plugged: Yes   | EMR Level: 0.90";
         assertEquals(expectedPlugged, device.toString().trim());
     }
 }
