@@ -22,7 +22,6 @@ public class CustomApplianceSet implements Set<ElectricAppliance> {
     /** The current number of elements in the set. */
     private int size;
 
-
     /**
      * Constructs an empty CustomApplianceSet with the default initial capacity (15). (Constructor 1)
      */
