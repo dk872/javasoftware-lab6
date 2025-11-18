@@ -16,6 +16,11 @@ public class Laptop extends ElectricAppliance {
      */
     public Laptop(String name, int powerConsumptionW, double electromagneticRadiationLevel, int screenSizeInches) {
         super(name, powerConsumptionW, electromagneticRadiationLevel);
+
+        if (screenSizeInches < 5) {
+            throw new IllegalArgumentException("Laptop screen size must be at least 5 inches.");
+        }
+        
         this.screenSizeInches = screenSizeInches;
     }
 
