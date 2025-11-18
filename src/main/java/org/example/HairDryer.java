@@ -16,6 +16,11 @@ public class HairDryer extends ElectricAppliance {
      */
     public HairDryer(String name, int powerConsumptionW, double electromagneticRadiationLevel, int speedSettings) {
         super(name, powerConsumptionW, electromagneticRadiationLevel);
+
+        if (speedSettings <= 0) {
+            throw new IllegalArgumentException("HairDryer must have at least one speed setting.");
+        }
+        
         this.speedSettings = speedSettings;
     }
 
